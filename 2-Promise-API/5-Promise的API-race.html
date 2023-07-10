@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise API - race</title>
+</head>
+<body>
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('OK');
+            }, 1000);
+        })
+        let p2 = Promise.resolve('Success');
+        let p3 = Promise.resolve('Oh Yeah');
+
+        //調用
+        const result = Promise.race([p1, p2, p3]);
+
+        console.log(result);
+        // Promise.race返回優先執行的對象
+        // 例子為將P1設置一個定時器延遲他傳入 此時優先傳入的對象將會是p2
+        //所以Promise.race 將返回p2的值
+    </script>
+</body>
+
+</html>
